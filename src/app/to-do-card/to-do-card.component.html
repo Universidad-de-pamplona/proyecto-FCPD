@@ -1,0 +1,30 @@
+<div class="card">
+  <header class="header">
+    <h1 class="header-title">To Do</h1>
+</header>
+
+
+<section class="tasks" #tasks>
+  <div class="task">
+      <p class="task-title">Investigar sobre el acercamiento</p>
+  </div>
+  <div class="task">
+      <p class="task-title">Investigar la forma de guardar la imagenes en la base de datos</p>
+  </div>
+  <div class="task">
+      <p class="task-title">En un txt emular en JSON datos para probar con el frontend</p>
+      <div class="progress-bar"></div>
+  </div>
+  <div class="task">
+      <p class="task-title">Generar los servicios del dataSet en la estructura del frontend</p>
+  </div>
+</section>
+
+<section class="project-management">
+  <h2 class="project-title">Project Management</h2>
+  <div class="add-task">
+      <input  type="text"  id="item-input" #newTask   name="newTask"placeholder="Nueva tarea">
+      <button (click)="addTask(newTask.value)" >Agregar</button>
+  </div>
+</section>
+</div>
