@@ -1,8 +1,12 @@
+
 <div class="fondo">
   <div class="wrapper">
-    <img class="logo-img" src="/assets/user_profile.png" >
-    <form action="#" autocomplete="off" [formGroup]="formulario">
-      <h2>Login</h2>
+    <form action="#" autocomplete="off">
+      <h2>Register</h2>
+      <div class="input-field">
+        <input type="text" required autocomplete="off">
+        <label>Enter your username</label>
+      </div>
       <div class="input-field">
         <input type="text" required autocomplete="off">
         <label>Enter your email</label>
@@ -11,19 +15,21 @@
         <input type="password" required autocomplete="off">
         <label>Enter your password</label>
       </div>
+      <div class="input-field">
+        <input type="password" required autocomplete="off">
+        <label>Comfirm your password</label>
+      </div>
       <div class="forget">
         <label for="remember">
           <input type="checkbox" id="remember">
           <p>Remember me</p>
         </label>
-        <a href="#">Forgot password?</a>
       </div>
-      <button type="submit">Log In</button>
+      <button type="submit">Register</button>
       <div class="register">
-        <p>Don't have an account? <a href="/register">Register</a></p>
+        <p>Don't have an account? <a href="#">Register</a></p>
       </div>
     </form>
   </div>
 
 </div>
-

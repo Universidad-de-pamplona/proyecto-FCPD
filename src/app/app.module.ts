@@ -9,9 +9,9 @@ import { ErrorComponent } from './pages/error/error.component';
 import { LoginComponent } from './pages/auth/components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
-import { ToDoCardComponent } from './pages/to-do-card/to-do-card.component';
-import { DoingCardComponent } from './pages/doing-card/doing-card.component';
-import { DoneCardComponent } from './pages/done-card/done-card.component';
+import { ToDoCardComponent } from './pages/proyects/components/to-do-card/to-do-card.component';
+import { DoingCardComponent } from './pages/proyects/components/doing-card/doing-card.component';
+import { DoneCardComponent } from './pages/proyects/components/done-card/done-card.component';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { apiInterceptor } from './core/interceptors/api.interceptor';
 import { initAuth } from './app.config';
@@ -19,6 +19,9 @@ import { errorInterceptor } from './core/interceptors/error.interceptor';
 import { tokenInterceptor } from './core/interceptors/token.interceptor';
 import { JwtService } from './pages/auth/services/jwt.service';
 import { UserService } from './pages/auth/services/user.service';
+import { RegisterComponent } from './pages/auth/components/register/register.component';
+import { NavbarComponent } from './core/shared/components/navbar/navbar.component';
+import { FooterComponent } from './core/shared/components/footer/footer.component';
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 const appRoutes:Route[] = [
 
@@ -27,6 +30,7 @@ const appRoutes:Route[] = [
   {path:'about', component:AboutComponent},
   {path:'contacts', component:ContactsComponent},
   {path:'login', component:LoginComponent},
+  {path:'register', component:RegisterComponent},
   //{path:'logout', component:LogoutComponent},
   {path:'**', component:ErrorComponent}//muy importante que el path a pagina de error este de ultimo
 
@@ -42,11 +46,13 @@ const appRoutes:Route[] = [
     LoginComponent,
     ToDoCardComponent,
     DoingCardComponent,
-    DoneCardComponent
+    DoneCardComponent,
+    RegisterComponent,
+    FooterComponent
 
   ],
   imports: [
-    BrowserModule,ReactiveFormsModule,  RouterModule.forRoot(appRoutes)
+    BrowserModule,ReactiveFormsModule,  RouterModule.forRoot(appRoutes),NavbarComponent
 
   ],
   providers:  [

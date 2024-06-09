@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'; // Import here
 
 
@@ -18,6 +18,10 @@ export class LoginComponent implements OnInit {
     addEventListener("hashchange", ()=> {
       document.body.style.transform = `scale(${1})`;
     });
+
+    this.formulario = new FormGroup({
+      firstName: new FormControl()
+  });
     this.setZoom(1);
     this.formulario = this.fb.group({
       email: ['', Validators.required],
@@ -26,7 +30,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
   title="INICIO DE SESIÓN";
+
 
    setZoom(zoomLevel: number): void {
     document.body.style.transform = `scale(${zoomLevel})`;

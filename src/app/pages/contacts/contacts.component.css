@@ -1,0 +1,120 @@
+
+
+.contenedor {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+
+@media (min-width: 1300px) {
+  .contenedor {
+      width: 1300px;
+  }
+}
+
+#contacts {
+  margin: 0;
+  padding-bottom: 12rem;
+  background-color: #0D2A3F;
+
+}
+
+#contacts .espacio-con {
+  background: #21689E;
+  width: 100%;
+  height: 82px;
+}
+
+#contacts h2 {
+  text-align: center;
+  color: #ffffff;
+  padding: 0;
+  margin: 10rem auto 0 auto;
+  font-size: 3rem;
+}
+
+#contacts p {
+  text-align: center;
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+#contacts a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#contacts a i {
+  font-style: normal;
+}
+
+#emailContainer {
+  margin: 1rem auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+#email {
+  background-color: black;
+  border: 2px double black;
+  padding: 1px 5px;
+  font-size: 1.5rem;
+}
+
+
+
+.links {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-size: 2rem;
+}
+
+.links a:hover, .links i:hover {
+  color: #0D2A3F;
+  background: #35A6FD;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+@media (max-width: 900px) {
+  #contacts h2 {
+      font-size: 2rem;
+  }
+
+  #contacts p {
+      font-size: 1.5rem;
+      padding: 2px;
+  }
+
+  .links {
+      flex-direction: column;
+  }
+}
+
+@media (max-width: 650px) {
+
+  #contacts h2 {
+      margin: 3px;
+  }
+
+  #contacts {
+      padding: 0;
+  }
+}
