@@ -2,29 +2,84 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
+import { Observable, BehaviorSubject } from "rxjs";
+import { JwtService } from "./jwt.service";
+import { map, distinctUntilChanged, tap, shareReplay } from "rxjs/operators";
+import { User } from 'src/app/core/models/user.model';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'https://api.example.com'; // Cambia esto a tu URL de backend
+  private apiUrl = 'https://localhost:3000'; // Cambia esto a tu URL de backend
+  private currentUserSubject = new BehaviorSubject<User | null>(null);
+  public currentUser = this.currentUserSubject
+    .asObservable()
+    .pipe(distinctUntilChanged());
 
-  constructor(private http: HttpClient) {}
 
-  getUser(userId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/users/${userId}`);
+  public isAuthenticated = this.currentUser.pipe(map((user) => !!user));
+
+
+  constructor(
+    private readonly http: HttpClient,
+    private readonly jwtService: JwtService,
+    private readonly router: Router,
+  ) {}
+
+  ;
+
+  login(credentials: {
+    email: string;
+    password: string;
+  }): Observable<{ user: User }> {
+    return this.http
+      .post<{ user: User }>("/users/login", { user: credentials })
+      .pipe(tap(({ user }) => this.setAuth(user)));
   }
 
-  updateUser(userId: number, userData: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/users/${userId}`, userData);
+  register(credentials: {
+    username: string;
+    email: string;
+    password: string;
+  }): Observable<{ user: User }> {
+    return this.http
+      .post<{ user: User }>("/users", { user: credentials })
+      .pipe(tap(({ user }) => this.setAuth(user)));
   }
 
-  getCurrentUser(){
-    return "user";
+  logout(): void {
+    this.purgeAuth();
+    void this.router.navigate(["/"]);
   }
-  isAuthenticated(){
-    return true;
+
+  getCurrentUser(): Observable<{ user: User }> {
+    return this.http.get<{ user: User }>("/user").pipe(
+      tap({
+        next: ({ user }) => this.setAuth(user),
+        error: () => this.purgeAuth(),
+      }),
+      shareReplay(1),
+    );
   }
+
+  update(user: Partial<User>): Observable<{ user: User }> {
+    return this.http.put<{ user: User }>("/user", { user }).pipe(
+      tap(({ user }) => {
+        this.currentUserSubject.next(user);
+      }),
+    );
+  }
+
+  setAuth(user: User): void {
+    this.jwtService.saveToken(user.token);
+    this.currentUserSubject.next(user);
+  }
+
+  purgeAuth(): void {
+    this.jwtService.removeToken();
+    this.currentUserSubject.next(null);
+  }
+
 
 }
