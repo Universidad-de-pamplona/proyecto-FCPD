@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'; // Import here
+import { AuthService } from './auth.service';
 
 
 @Component({
@@ -10,24 +11,26 @@ import { ReactiveFormsModule } from '@angular/forms'; // Import here
 })
 export class LoginComponent implements OnInit {
 
-  formulario!: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  loginForm: FormGroup;
+  constructor(private fb: FormBuilder, private auth: AuthService) {
+ this.loginForm = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', [Validators.required]]
+
+    });
+
+  }
 
   ngOnInit() {
     addEventListener("hashchange", ()=> {
       document.body.style.transform = `scale(${1})`;
     });
 
-    this.formulario = new FormGroup({
-      firstName: new FormControl()
-  });
-    this.setZoom(1);
-    this.formulario = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', [Validators.required]]
 
-    });
+    this.setZoom(1);
+
+
   }
 
 
@@ -37,13 +40,16 @@ export class LoginComponent implements OnInit {
    setZoom(zoomLevel: number): void {
     document.body.style.transform = `scale(${zoomLevel})`;
   }
-  loginUser(){
+  onSubmit() {
+   /* if (this.loginForm.valid) {
+      this..login(
+        this.loginForm.value.username,
+        this.loginForm.value.password
+      ).subscribe(
+        success => console.log('Login exitoso', success),
+        error => console.error('Error en login', error)
+      );*/
+    }
 
-    const email = this.formulario.value.email;
-    const password = this.formulario.value.password;
-    console.log(email+"..."+password);
-   // this.logiServise.login(email,password);
-
-      }
 
 }

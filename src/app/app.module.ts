@@ -12,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ToDoCardComponent } from './pages/proyects/components/to-do-card/to-do-card.component';
 import { DoingCardComponent } from './pages/proyects/components/doing-card/doing-card.component';
 import { DoneCardComponent } from './pages/proyects/components/done-card/done-card.component';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { apiInterceptor } from './core/interceptors/api.interceptor';
 import { initAuth } from './app.config';
 import { errorInterceptor } from './core/interceptors/error.interceptor';
@@ -22,6 +22,8 @@ import { UserService } from './pages/auth/services/user.service';
 import { RegisterComponent } from './pages/auth/components/register/register.component';
 import { NavbarComponent } from './core/shared/components/navbar/navbar.component';
 import { FooterComponent } from './core/shared/components/footer/footer.component';
+import { AuthService } from './pages/auth/components/login/auth.service';
+
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 const appRoutes:Route[] = [
 
@@ -52,11 +54,12 @@ const appRoutes:Route[] = [
 
   ],
   imports: [
-    BrowserModule,ReactiveFormsModule,  RouterModule.forRoot(appRoutes),NavbarComponent
+    BrowserModule,ReactiveFormsModule,  RouterModule.forRoot(appRoutes),NavbarComponent,HttpClientModule
 
   ],
   providers:  [
     CookieService,
+    AuthService,
     provideHttpClient(
       withInterceptors([apiInterceptor, tokenInterceptor, errorInterceptor]),
     ),

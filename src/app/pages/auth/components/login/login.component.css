@@ -8,10 +8,10 @@
 }
 
 .logo-img{
-  margin: 20px;
+  margin: 10px;
   cursor: none;
-  max-width: 200px;
-  max-height: 200px;;
+  max-width: 160px;
+  max-height: 160px;;
   filter: brightness(0) invert(1); /*convierte la imagen a blanco*/
   text-align: center;
   background-position: center;

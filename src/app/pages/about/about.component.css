@@ -3,7 +3,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: url("assets/fondo.jpg"); /*#1B537F*/
+  background-image: url("/assets/fondo.jpg"); /*#1B537F*/
   background-size:cover ;
   margin: 0;
   justify-content: center;
