@@ -1,0 +1,120 @@
+.vertical-nav {
+  /*background-color: rgba(255, 255, 255, 0.8); /* Fondo translúcido */
+  width: 200px; /* Ancho de la barra */
+  padding: 0;
+  list-style-type: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-right: 1px solid #ccc ;
+  list-style: none;
+}
+
+.vertical-nav ul {
+margin: 0;
+padding: 0;
+}
+.vertical-nav li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: larger;
+  list-style: none;
+  color: #ccc;
+
+
+  text-align: center;
+  border-bottom: 1px solid #ccc; /* Línea divisoria entre elementos */
+}
+.vertical-nav li :hover{
+
+background-color: aliceblue;
+color: #333;
+
+}
+.vertical-nav li :active{
+
+  background-color: rgba(240, 248, 255, 0.734);
+  color: #333;
+
+  }
+
+.vertical-nav li:last-child {
+  border-bottom: none; /* Elimina la línea divisoria del último elemento */
+}
+
+.vertical-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+  height: 80px;
+  text-decoration: none;
+  font-size: larger;
+  font-family: 'Times New Roman';
+  color: #ccc;
+
+}
+
+.vertical-nav a:hover {
+  background-color: #555;
+  color: white;
+}
+.content{
+  margin: 0;
+  padding: 0;
+
+  justify-content: center;
+  width: 100%;
+}
+
+
+.fondo{
+  /*background-position: 0%;*/
+/*margin-top: 80px;*/
+display: flex;
+position: sticky;
+  background-size: cover;
+padding: 0 ;
+width:100%;
+ height:100vh;
+ /* background-image: url("https://trello-backgrounds.s3.amazonaws.com/5ea92d56642ad37917862ea4/2386x1600/255c5f56ccf2b7bd68aaf9f51d0dbcc5/Asset_1%404x.png");
+*/
+background-image: url("/assets/fondo-proyectos.jpg") ;
+
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.board {
+  position: sticky;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  min-height: 70vh;
+}
+
+.list {
+  background-color: #f4f5f7;
+  border-radius: 5px;
+  padding: 10px;
+  width: 30%;
+}
+
+.list-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding:0 10px;
+  margin-bottom: 0px;
+}

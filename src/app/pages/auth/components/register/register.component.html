@@ -1,0 +1,32 @@
+
+<div class="fondo">
+  <div class="wrapper">
+    <form autocomplete="off" [formGroup]="regForm" (ngSubmit)="onSubmit()">
+      <h2>Register</h2>
+      <div class="input-field">
+        <input type="text"  formControlName="username"  required autocomplete="off">
+        <label>Enter your username</label>
+      </div>
+      <div class="input-field">
+        <input type="text"  formControlName="email" required autocomplete="off" >
+        <label>Enter your email</label>
+      </div>
+      <div class="input-field">
+        <input type="password"   formControlName="password" required autocomplete="off">
+        <label>Enter your password</label>
+      </div>
+      <div class="input-field">
+        <input type="password" formControlName="passwordConfirm" required autocomplete="off">
+        <label>Comfirm your password</label>
+      </div>
+      <div class="forget">
+        <label for="remember">
+          <input type="checkbox" id="remember">
+          <p>Remember me</p>
+        </label>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+</div>
