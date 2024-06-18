@@ -1,0 +1,74 @@
+
+<div class="kanban">
+
+
+  <div class="card">
+    <header class="header">
+      <h1 class="header-title">To Do</h1>
+  </header>
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[doingList,doneList]"
+      class="tasks"
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of todo"  class="task" cdkDrag>
+        <p class="task-title">{{item}}</p>
+      </div>
+      <div class="dropdown-container">
+        <button *ngIf="!showInput" (click)="toggleInput()" class="btn-createTask"><div style="font-size:50px; font-family:'Times New Roman' ; margin-right: 10px;">+</div>Crear tarea</button>
+        <form [formGroup]="createtaskForm" autocomplete="off" *ngIf="showInput" class="task-modal" (click)="$event.stopPropagation()" (ngSubmit)="createTask()">
+          <input formControlName="task" ttype="text" placeholder="Escribe aquí la nueva tarea" #newtask>
+          <div style="display: flex; justify-content:flex-end"><button type="submit" class="btn-create-task">Crear</button></div>
+         </form>
+
+        </div>
+     </div>
+
+    </div>
+
+    <div class="card">
+      <header class="header">
+        <h1 class="header-title">Doing</h1>
+    </header>
+      <div
+        cdkDropList
+        #doingList="cdkDropList"
+        [cdkDropListData]="doing"
+        [cdkDropListConnectedTo]="[doneList,todoList]"
+        class="tasks"
+        (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let item of doing"  class="task" cdkDrag>
+          <p class="task-title">{{item}}</p>
+        </div>
+
+       </div>
+
+      </div>
+
+
+
+
+
+  <div  class="card">
+    <header class="header">
+      <h1 class="header-title">Done</h1>
+  </header>
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[todoList,doingList]"
+      class="tasks"
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of done"  class="task" cdkDrag>
+        <div class="dot high"></div>
+        <p class="task-title">{{item}}</p>
+     </div>
+    </div>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,29 @@
+<div>
+  <nav id="navbar">
+
+    <div style=" padding: 30px;display: flex; align-items: center;"><img src="/assets/icono.jpg" class="tochion-icon"><h2>TOUCHION</h2></div>
+    <ul>
+        <li><a href="about" (click)="goRouter('about')">ABOUT</a></li>
+        <li><a href="proyects" (click)="goRouter('proyects')">PROJECTS</a></li>
+        <li><a href="contacts" (click)="goRouter('contacts')">CONTACTS</a></li>
+        <li *ngIf="!logged()"><a href="login" (click)="goRouter('login')">LOGIN</a></li>
+
+        <li *ngIf="logged()">
+         <div class="dropdown">
+          <div class="dropbtn">
+            <div class=" dropdown-toggle profile-card" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="profile-icon"> </div><!-- Espacio para el icono -->
+              {{userName()}} <!-- Espacio para el nombre -->
+           </div>
+          </div>
+          <div class="dropdown-content">
+            <a  (click)="logout()">LOGOUT</a>
+
+          </div>
+        </div>
+          </li>
+
+      </ul>
+</nav>
+</div>
+
